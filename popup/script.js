@@ -209,11 +209,16 @@ document.getElementById('exit-editor-btn').addEventListener('click', function ()
 });
 
 document.getElementById('save-btn').addEventListener('click', function () {
+    debugger;
     const text = document.getElementById('textarea').value;
-    const name = document.getElementById('name').value;
+    let name = document.getElementById('name').value;
 
-    if (text === '' || name === '') {
+    if (text === '') {
         return;
+    }
+
+    if(name.replace(/ /g,'') == ''){
+        name = 'Untitled';
     }
 
     noteList.addNote(name, text).then(() => {
